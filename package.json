@@ -68,11 +68,11 @@
     "zod": "^3.24.2",
     "vite": "^7.3.1",
     "typescript": "^5.8.3"
-
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@types/node": "^22.16.5",
+    "@lovable.dev/vite-tanstack-config": "^1.5.1",
+    "@types/node": "^25.6.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
