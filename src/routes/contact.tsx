@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact Geebee Properties" },
-      { name: "description", content: "Get in touch with Geebee Properties in Lagos, Nigeria." },
+      { title: "Contact Gee-Bee Properties Concepts" },
+      { name: "description", content: "Get in touch with Gee-Bee Properties Concepts in Lagos, Nigeria." },
     ],
   }),
 });
@@ -20,6 +20,7 @@ function ContactPage() {
       <div className="grid md:grid-cols-2 gap-8">
         {[
           { icon: Phone, label: "Phone", value: "+234 803 678 7815", href: "tel:+2348036787815" },
+          { icon: MessageCircle, label: "WhatsApp", value: "+234 803 678 7815", href: "https://wa.me/2348036787815" },
           { icon: Mail, label: "Email", value: "chriscage988@gmail.com", href: "mailto:chriscage988@gmail.com" },
           { icon: MapPin, label: "Address", value: "Ologolo, Lekki Peninsula II, Lekki 106104, Lagos, Nigeria" },
           { icon: Clock, label: "Hours", value: "Open 24 hours" },
