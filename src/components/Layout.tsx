@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
+import { Phone, Mail, MapPin, Menu, X, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export function Layout() {
@@ -44,10 +44,10 @@ export function Layout() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Geebee Properties" className="h-10 w-10 object-contain" />
+            <img src={logo} alt="Gee-Bee Properties Concepts" className="h-10 w-10 object-contain" />
             <div className="hidden sm:block">
-              <div className="font-display text-lg leading-none text-gold">Geebee</div>
-              <div className="text-[10px] tracking-[0.2em] text-muted-foreground">PROPERTIES</div>
+              <div className="font-display text-lg leading-none text-gold">Gee-Bee</div>
+              <div className="text-[10px] tracking-[0.2em] text-muted-foreground">PROPERTIES CONCEPTS</div>
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
@@ -93,7 +93,7 @@ export function Layout() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img src={logo} alt="" className="h-10 w-10 object-contain" />
-              <div className="font-display text-lg text-gold">Geebee Properties</div>
+              <div className="font-display text-lg text-gold">Gee-Bee Properties Concepts</div>
             </div>
             <p className="text-sm text-muted-foreground">Ready to satisfy you and give you a precious home of your choice.</p>
           </div>
@@ -101,6 +101,12 @@ export function Layout() {
             <h4 className="text-gold mb-3 text-sm tracking-widest">CONTACT</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-gold" /> +234 803 678 7815</li>
+              <li className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 text-gold" />
+                <a href="https://wa.me/2348036787815" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                  WhatsApp: +234 803 678 7815
+                </a>
+              </li>
               <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-gold" /> chriscage988@gmail.com</li>
               <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-gold mt-0.5" /> Ologolo, Lekki Peninsula II, Lagos, Nigeria</li>
             </ul>
@@ -111,7 +117,7 @@ export function Layout() {
           </div>
         </div>
         <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Geebee Properties. All rights reserved.
+          © {new Date().getFullYear()} Gee-Bee Properties Concepts. All rights reserved.
         </div>
       </footer>
     </div>
