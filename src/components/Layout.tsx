@@ -1,40 +1,11 @@
-import { Link, Outlet, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { Link, Outlet } from "@tanstack/react-router";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Menu, X, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export function Layout() {
-  const [user, setUser] = useState<any>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        supabase.from("user_roles").select("role").eq("user_id", session.user.id).eq("role", "admin").maybeSingle()
-          .then(({ data }) => setIsAdmin(!!data));
-      } else {
-        setIsAdmin(false);
-      }
-    });
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        supabase.from("user_roles").select("role").eq("user_id", session.user.id).eq("role", "admin").maybeSingle()
-          .then(({ data }) => setIsAdmin(!!data));
-      }
-    });
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate({ to: "/" });
-  };
 
   return (
     <div className="min-h-screen bg-gradient-dark flex flex-col">
@@ -54,14 +25,6 @@ export function Layout() {
             <Link to="/" className="text-sm hover:text-gold transition-colors" activeProps={{ className: "text-gold" }}>Home</Link>
             <Link to="/properties" className="text-sm hover:text-gold transition-colors" activeProps={{ className: "text-gold" }}>Properties</Link>
             <Link to="/contact" className="text-sm hover:text-gold transition-colors" activeProps={{ className: "text-gold" }}>Contact</Link>
-            {isAdmin && (
-              <Link to="/admin" className="text-sm hover:text-gold transition-colors" activeProps={{ className: "text-gold" }}>Admin</Link>
-            )}
-            {user ? (
-              <Button onClick={handleSignOut} variant="outline" size="sm">Sign out</Button>
-            ) : (
-              <Link to="/auth"><Button variant="outline" size="sm">Admin login</Button></Link>
-            )}
           </nav>
           <button className="md:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X /> : <Menu />}
@@ -73,12 +36,6 @@ export function Layout() {
               <Link to="/" onClick={() => setOpen(false)} className="text-sm py-2">Home</Link>
               <Link to="/properties" onClick={() => setOpen(false)} className="text-sm py-2">Properties</Link>
               <Link to="/contact" onClick={() => setOpen(false)} className="text-sm py-2">Contact</Link>
-              {isAdmin && <Link to="/admin" onClick={() => setOpen(false)} className="text-sm py-2">Admin</Link>}
-              {user ? (
-                <Button onClick={handleSignOut} variant="outline" size="sm">Sign out</Button>
-              ) : (
-                <Link to="/auth" onClick={() => setOpen(false)}><Button variant="outline" size="sm" className="w-full">Admin login</Button></Link>
-              )}
             </div>
           </div>
         )}
