@@ -82,5 +82,10 @@
 
 
 import { createRequestHandler } from '@tanstack/start/server'
-import { getRouterManifest } from '@tanstack/start/router/mainifest'
-export const handler = createRequestHandler({ maanifest: getRouterManifest })
+import { getRouterManifest } from '@tanstack/start/router/manifest'
+
+const handler = createRequestHandler({ 
+  manifest: getRouterManifest 
+})
+
+export default handler;
