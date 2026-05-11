@@ -5,6 +5,7 @@ import { PropertyCard, type PropertyCardData } from "@/components/PropertyCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Sparkles, ShieldCheck, Home as HomeIcon } from "lucide-react";
 import hero from "@/assets/hero.jpg";
+import cacCertificate from "@/assets/cac-certificate.jpg";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -72,6 +73,39 @@ function HomePage() {
             <p className="text-sm text-muted-foreground mt-1">{f.text}</p>
           </div>
         ))}
+      </section>
+
+      {/* Certification */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+        <div className="text-center mb-8">
+          <p className="text-xs tracking-widest text-gold mb-2">OFFICIALLY REGISTERED</p>
+          <h2 className="font-display text-4xl">Certificate of Registration</h2>
+          <p className="text-sm text-muted-foreground mt-3 max-w-2xl mx-auto">
+            Gee-Bee Properties Concepts is a registered business under the Corporate Affairs Commission of the Federal Republic of Nigeria.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-gold/30 bg-card p-4 sm:p-8 shadow-luxe">
+          <img
+            src={cacCertificate}
+            alt="Gee-Bee Properties Concepts CAC Certificate of Registration"
+            className="w-full h-auto rounded-lg mx-auto max-w-2xl"
+            loading="lazy"
+          />
+          <div className="mt-6 grid sm:grid-cols-3 gap-4 text-center text-sm">
+            <div className="p-3 rounded-lg bg-background/40">
+              <div className="text-xs tracking-widest text-gold mb-1">REG. NO.</div>
+              <div className="font-medium">8832115</div>
+            </div>
+            <div className="p-3 rounded-lg bg-background/40">
+              <div className="text-xs tracking-widest text-gold mb-1">BUSINESS</div>
+              <div className="font-medium">Real Estate Activities</div>
+            </div>
+            <div className="p-3 rounded-lg bg-background/40">
+              <div className="text-xs tracking-widest text-gold mb-1">REGISTERED</div>
+              <div className="font-medium">17 September, 2025</div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Featured properties */}
